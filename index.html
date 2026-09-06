@@ -19,6 +19,7 @@ button{cursor:pointer}.toast{position:fixed;left:50%;bottom:28px;transform:trans
 .searchModal{width:min(850px,86vw);height:min(748px,82vh);display:flex;flex-direction:column}.searchBody{padding:24px 28px;overflow:auto}.searchRow{display:flex;gap:18px}.inputWrap{position:relative;flex:1}.inputWrap input{width:100%;height:44px;border:2px solid #655cff;border-radius:13px;padding:0 42px;font-size:16px;outline:none}.inputWrap .glass{position:absolute;left:14px;top:10px;color:#888}.clear{position:absolute;right:10px;top:10px;border:0;background:#d5d6db;color:#fff;width:24px;height:24px;border-radius:50%}.blackBtn{height:44px;border:0;border-radius:22px;background:#222;color:#fff;padding:0 22px;font-weight:700}.searchEmpty{height:500px;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#c0c2c8}.resultMeta{color:#6e7380;font-size:14px;padding:22px 0 15px;border-bottom:1px solid var(--line)}.resultCard{background:#f8f8f9;border-radius:18px;padding:18px 20px;margin-top:14px}.resultCard h4{margin:0 0 8px;font-size:17px}.resultCard p{margin:0;color:#666b76;font-size:13px;line-height:1.6}.resultFoot{display:flex;align-items:center;justify-content:space-between;margin-top:14px}.source{color:#999da7;font-size:12px}.resultActions{display:flex;gap:9px}.lightBtn,.darkBtn{border:0;border-radius:8px;padding:8px 11px}.lightBtn{background:#fff;color:#666}.darkBtn{background:#202020;color:#fff;font-weight:700}.darkBtn.added{background:#e9f8ef;color:#278554}
 .uploadModal{width:min(860px,86vw)}.uploadHead small{color:#92959d;font-weight:400}.dropZone{height:292px;margin:20px 28px 28px;border:1px dashed #e1e2e8;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column}.uploadBig{font-size:27px}.dropTitle{font-size:16px;margin-top:10px}.dropSub{color:#9498a1;font-size:13px;margin-top:6px}.uploadBtns{display:flex;gap:12px;margin-top:24px}.uploadBtns button{height:42px;padding:0 18px;border:1px solid #e7e8ec;background:#fff;border-radius:11px}.uploadProgress{display:none;padding:0 28px 24px}.uploadProgress.show{display:block}.progressTop{display:flex;justify-content:space-between;font-size:13px}.track{height:7px;background:#ededf3;border-radius:10px;margin-top:10px;overflow:hidden}.bar{height:100%;background:#5b57ff;width:0;transition:.15s}
 .thirdModal{width:min(875px,86vw)}.provider{height:94px;margin:0 28px;border-bottom:1px solid var(--line);display:flex;align-items:center}.provider:last-child{border-bottom:0}.providerLogo{width:46px;height:46px;border:1px solid #e7e8ed;border-radius:12px;display:grid;place-items:center;font-size:20px;margin-right:14px}.providerText b{display:block;font-size:16px}.providerText span{display:block;color:#9a9da5;font-size:13px;margin-top:5px}.provider button{margin-left:auto;border:0;border-radius:10px;background:#f1f1f2;padding:10px 17px;font-weight:700}
+.thirdOauthHint{margin:14px 28px 2px;padding:10px 12px;border:1px solid #e7e8ef;border-radius:10px;background:#fafafd;color:#747985;font-size:12px;line-height:1.55}.thirdOauthHint b{color:#474b55}.provider{transition:.18s ease}.provider.isConnected{background:linear-gradient(90deg,rgba(236,250,242,.55),transparent)}.provider.isConnected .providerText span{color:#278554}.provider.isBusy{opacity:.72}.provider button{min-width:106px;transition:.18s ease}.provider button:hover{background:#e9e9ec}.provider.isConnected button{background:#eef8f2;color:#278554}.providerError{color:#c34747!important}.providerAccount{color:#278554!important}.providerLogo.baidu{color:#29364a}.providerLogo.yuque{color:#12a150}.providerLogo.feishu{color:#1687ff}.providerLogo.dingtalk{color:#1b6cff}
 /* READER */
 #readerView{height:100vh;display:none;background:#fff}.readerTop{height:54px;display:grid;grid-template-columns:120px 1fr auto;align-items:center;border-bottom:1px solid #f0f1f5;padding:0 12px}.brand{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800;cursor:pointer}.logoMark{width:35px;height:35px;border:4px solid #655cff;border-radius:50%;display:grid;place-items:center;color:#655cff}.docTitle{font-size:20px;font-weight:650;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topActions{display:flex;gap:18px;font-size:14px;color:#222}
 .readerBody{height:calc(100vh - 54px);display:grid;grid-template-columns:52px minmax(460px,1fr) 8px var(--panel) 52px;transition:grid-template-columns .15s}.readerBody.panelClosed{grid-template-columns:52px minmax(460px,1fr) 0 0 52px}.leftNav,.rightNav{border-right:1px solid #eff0f4;background:#fff;z-index:5}.rightNav{border-left:1px solid #eff0f4;border-right:0}.navItem{height:78px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:12px;color:#626773;cursor:pointer}.navItem .ico{font-size:21px}.navItem.active{background:#eef0ff;color:#514dff}.navItem.active .ico{background:#dfe2ff;border-radius:8px;padding:6px}
@@ -4279,10 +4280,11 @@ body.dark .academicResultCard:hover{border-color:#665fb0!important}
 <div class="overlay" id="thirdOverlay">
   <div class="modal thirdModal">
     <div class="modalHead"><h3>第三方导入</h3><button class="x" data-close="thirdOverlay">×</button></div>
-    <div class="provider" data-provider="百度网盘"><div class="providerLogo">◉</div><div class="providerText"><b>百度网盘</b><span>未授权</span></div><button>关联账户</button></div>
-    <div class="provider" data-provider="语雀文档"><div class="providerLogo">🟢</div><div class="providerText"><b>语雀文档</b><span>未授权</span></div><button>关联账户</button></div>
-    <div class="provider" data-provider="飞书文档"><div class="providerLogo">🔷</div><div class="providerText"><b>飞书文档</b><span>未授权</span></div><button>关联账户</button></div>
-    <div class="provider" data-provider="钉钉文档"><div class="providerLogo">➤</div><div class="providerText"><b>钉钉文档</b><span>未授权</span></div><button>关联账户</button></div>
+    <div class="thirdOauthHint"><b>官方 OAuth 授权</b> · 点击“关联账户”会打开对应平台的官方登录/授权页。账号密码不会提交给心流前端，访问令牌仅由授权服务端保存。</div>
+    <div class="provider" data-provider="baidu" data-label="百度网盘"><div class="providerLogo baidu">◉</div><div class="providerText"><b>百度网盘</b><span class="providerStatus">未授权</span></div><button class="providerConnectBtn">关联账户</button></div>
+    <div class="provider" data-provider="yuque" data-label="语雀文档"><div class="providerLogo yuque">●</div><div class="providerText"><b>语雀文档</b><span class="providerStatus">未授权</span></div><button class="providerConnectBtn">关联账户</button></div>
+    <div class="provider" data-provider="feishu" data-label="飞书文档"><div class="providerLogo feishu">◆</div><div class="providerText"><b>飞书文档</b><span class="providerStatus">未授权</span></div><button class="providerConnectBtn">关联账户</button></div>
+    <div class="provider" data-provider="dingtalk" data-label="钉钉文档"><div class="providerLogo dingtalk">➤</div><div class="providerText"><b>钉钉文档</b><span class="providerStatus">未授权</span></div><button class="providerConnectBtn">关联账户</button></div>
   </div>
 </div>
 
@@ -5359,8 +5361,108 @@ function doUpload(file){
     },120);
   });
 }
-$('#thirdBtn').onclick=e=>{e.stopPropagation();openOverlay('thirdOverlay')};
-$$('.provider button').forEach(b=>b.onclick=()=>{const row=b.closest('.provider'),name=row.dataset.provider;row.querySelector('.providerText span').textContent='已授权';b.textContent='已关联';b.disabled=true;toast(name+' 已关联（Mock）')});
+const OAUTH_PROVIDER_LABELS={baidu:'百度网盘',yuque:'语雀文档',feishu:'飞书文档',dingtalk:'钉钉文档'};
+const OAUTH_SESSION_KEY='iflow.oauthSessionId.v1';
+function makeOAuthSessionId(){
+  try{if(crypto?.randomUUID)return crypto.randomUUID()}catch(e){}
+  try{const a=new Uint32Array(4);crypto.getRandomValues(a);return Array.from(a,x=>x.toString(16)).join('')}catch(e){}
+  return 's'+Date.now()+Math.random().toString(36).slice(2);
+}
+function getOAuthSessionId(){
+  let id='';
+  try{id=localStorage.getItem(OAUTH_SESSION_KEY)||''}catch(e){}
+  if(!id){id=makeOAuthSessionId();try{localStorage.setItem(OAUTH_SESSION_KEY,id)}catch(e){}}
+  return id;
+}
+function getOAuthApiBase(){
+  let saved='';
+  try{saved=localStorage.getItem('iflow.oauthApiBase')||''}catch(e){}
+  const explicit=String(window.IFLOW_OAUTH_API_BASE||saved||'').trim();
+  if(explicit)return explicit.replace(/\/$/,'');
+  if(location.protocol==='http:'||location.protocol==='https:')return location.origin;
+  return 'http://localhost:8787';
+}
+function oauthReturnOrigin(){
+  return (location.protocol==='http:'||location.protocol==='https:')?location.origin:'*';
+}
+function oauthRow(provider){return document.querySelector('.provider[data-provider="'+provider+'"]')}
+function setProviderState(provider,state={}){
+  const row=oauthRow(provider);if(!row)return;
+  const status=row.querySelector('.providerStatus'),btn=row.querySelector('.providerConnectBtn');
+  const connected=!!state.connected,busy=!!state.busy,error=state.error||'';
+  row.classList.toggle('isConnected',connected);row.classList.toggle('isBusy',busy);
+  row.dataset.connected=connected?'1':'0';
+  btn.disabled=busy;
+  btn.textContent=busy?'授权中…':(connected?'解除关联':'关联账户');
+  status.classList.toggle('providerError',!!error);
+  status.classList.toggle('providerAccount',connected);
+  if(error)status.textContent=error;
+  else if(connected)status.textContent='已授权'+(state.account?' · '+state.account:'');
+  else status.textContent='未授权';
+}
+async function refreshOAuthStatus(silent=true){
+  const base=getOAuthApiBase(),sessionId=getOAuthSessionId();
+  try{
+    const r=await fetch(base+'/api/oauth/status?sessionId='+encodeURIComponent(sessionId),{headers:{Accept:'application/json'}});
+    const data=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(data.error||'授权服务不可用');
+    Object.keys(OAUTH_PROVIDER_LABELS).forEach(p=>{
+      const c=data.providers?.[p];setProviderState(p,c?.connected?{connected:true,account:c.account||''}:{connected:false});
+    });
+    return data;
+  }catch(err){
+    if(!silent)toast('授权服务连接失败：'+(err.message||err));
+    return null;
+  }
+}
+async function disconnectProvider(provider){
+  const row=oauthRow(provider),label=OAUTH_PROVIDER_LABELS[provider]||provider;
+  if(!confirm('解除 '+label+' 的账户关联？'))return;
+  setProviderState(provider,{connected:true,busy:true,account:row?.querySelector('.providerStatus')?.textContent.replace(/^已授权\s*·?\s*/,'')||''});
+  try{
+    const r=await fetch(getOAuthApiBase()+'/api/oauth/'+encodeURIComponent(provider)+'/disconnect',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:getOAuthSessionId()})});
+    const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||'解除失败');
+    setProviderState(provider,{connected:false});toast(label+' 已解除关联');
+  }catch(err){setProviderState(provider,{connected:true,error:'解除失败'});toast(label+' 解除失败：'+(err.message||err))}
+}
+let oauthPollTimer=null;
+function beginOAuthPolling(provider,popup){
+  clearInterval(oauthPollTimer);let tries=0;
+  oauthPollTimer=setInterval(async()=>{
+    tries++;
+    const data=await refreshOAuthStatus(true);
+    const c=data?.providers?.[provider];
+    if(c?.connected){clearInterval(oauthPollTimer);setProviderState(provider,{connected:true,account:c.account||''});try{popup?.close()}catch(e){};toast((OAUTH_PROVIDER_LABELS[provider]||provider)+' 已成功关联')}
+    else if(tries>80||popup?.closed){clearInterval(oauthPollTimer);setProviderState(provider,{connected:false})}
+  },1500);
+}
+async function connectProvider(provider){
+  const label=OAUTH_PROVIDER_LABELS[provider]||provider,row=oauthRow(provider);
+  if(row?.dataset.connected==='1')return disconnectProvider(provider);
+  if(location.protocol==='file:'){toast('真实账号授权需要通过 http/https 打开页面；请运行配套 OAuth 服务');return}
+  setProviderState(provider,{connected:false,busy:true});
+  const popup=window.open('about:blank','iflowOAuth_'+provider,'width=560,height=760,menubar=no,toolbar=no,location=yes,resizable=yes,scrollbars=yes');
+  if(!popup){setProviderState(provider,{connected:false,error:'浏览器拦截了授权窗口'});toast('请允许此网站打开授权弹窗');return}
+  try{
+    popup.document.write('<p style="font-family:system-ui;padding:24px">正在打开 '+label+' 官方授权页…</p>');
+    const base=getOAuthApiBase(),sessionId=getOAuthSessionId();
+    const u=base+'/api/oauth/'+encodeURIComponent(provider)+'/start?sessionId='+encodeURIComponent(sessionId)+'&returnOrigin='+encodeURIComponent(oauthReturnOrigin());
+    const r=await fetch(u,{headers:{Accept:'application/json'}});const data=await r.json().catch(()=>({}));
+    if(!r.ok||!data.authorizationUrl)throw new Error(data.error||'授权服务未正确配置');
+    popup.location.replace(data.authorizationUrl);
+    beginOAuthPolling(provider,popup);
+  }catch(err){try{popup.close()}catch(e){};setProviderState(provider,{connected:false,error:'未配置或连接失败'});toast(label+'：'+(err.message||err))}
+}
+$('#thirdBtn').onclick=e=>{e.stopPropagation();openOverlay('thirdOverlay');refreshOAuthStatus(true)};
+$$('.providerConnectBtn').forEach(b=>b.onclick=()=>connectProvider(b.closest('.provider').dataset.provider));
+window.addEventListener('message',e=>{
+  const data=e.data||{};if(data.type!=='iflow-oauth-success'||!data.provider)return;
+  const expectedOrigin=(()=>{try{return new URL(getOAuthApiBase()).origin}catch(_){return ''}})();
+  if(expectedOrigin&&e.origin!==expectedOrigin)return;
+  clearInterval(oauthPollTimer);
+  setProviderState(data.provider,{connected:true,account:data.account?.name||data.account?.displayName||data.account?.login||''});
+  toast((OAUTH_PROVIDER_LABELS[data.provider]||data.provider)+' 已成功关联');
+});
 
 /* Card menu */
 document.addEventListener('click',e=>{if(!e.target.classList.contains('cardMenu'))$('#cardMenu').classList.remove('show')});
